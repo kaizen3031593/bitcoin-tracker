@@ -16,7 +16,7 @@
     "@babel/core": "^7.13.13",
     "@babel/plugin-transform-modules-commonjs": "^7.13.8",
     "@types/jest": "^26.0.10",
-    "@types/node": "^12.20.7",
+    "@types/node": "^14.14.37",
     "aws-cdk": "1.95.1",
     "jest": "^26.4.2",
     "ts-jest": "^26.2.0",
@@ -28,6 +28,7 @@
     "@aws-cdk/aws-iam": "^1.95.1",
     "@aws-cdk/aws-s3": "^1.95.1",
     "@aws-cdk/core": "1.95.1",
-    "source-map-support": "^0.5.16"
+    "source-map-support": "^0.5.16",
+    "uuid": "^8.3.2"
   }
 }
