@@ -18,7 +18,7 @@ export class InfrastructureStack extends cdk.Stack {
       resources: [
         `${bucket.bucketArn}/*`,
       ],
-      principals: [new iam.AnyPrincipal()],
+      principals: [new iam.AnyPrincipal()], // Anyone is depricated
     })
     bucket.addToResourcePolicy(bucketPolicy); // Add policy to bucket
   }
