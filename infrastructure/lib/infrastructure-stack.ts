@@ -23,7 +23,7 @@ export class InfrastructureStack extends cdk.Stack {
     const certificate = new certificateManager.DnsValidatedCertificate(this, 'Certificate', {
       domainName: 'bitcoin-patrol.com',
       hostedZone,
-      region: 'us-east-1'
+      region: 'us-east-1',
     });
 
     // Restrict access to bucket to only CloudFront
@@ -42,7 +42,7 @@ export class InfrastructureStack extends cdk.Stack {
       viewerCertificate: cloudfront.ViewerCertificate.fromAcmCertificate(
         certificate, // Specify cloudfront certificate that should be used
         {
-          aliases: ['bitcoin-patrol.com', 'www.bitcoin-patrol.com'],
+          aliases: ['bitcoin-patrol.com'],
           securityPolicy: cloudfront.SecurityPolicyProtocol.TLS_V1,
           sslMethod: cloudfront.SSLMethod.SNI,
         },
