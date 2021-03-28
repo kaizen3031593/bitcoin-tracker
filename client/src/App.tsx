@@ -25,7 +25,7 @@ const App: React.SFC = () => {
     ''
   );
   const cancelToken = axios.CancelToken;
-  const [cancelTokenSource, setCancelTokenSource]: [
+  const [cancelTokenSource]: [
     CancelTokenSource,
     (cancelTokenSource: CancelTokenSource) => void
   ] = React.useState(cancelToken.source());
@@ -39,7 +39,6 @@ const App: React.SFC = () => {
   React.useEffect(() => {
     axios
       .get<IPost[]>('https://jsonplaceholder.typicode.com/posts', {
-        cancelToken: cancelTokenSource.token,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -61,7 +60,7 @@ const App: React.SFC = () => {
         setLoading(false);
       });
       cancelTokenSource.cancel("User cancelled operation");
-  }, []);
+  }, [cancelTokenSource]);
   return (
     <div className="App">
       {loading && <button onClick={handleCancelClick}>Cancel</button>}
