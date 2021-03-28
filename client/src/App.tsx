@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import axios, { CancelTokenSource } from 'axios';
 import './App.css';
 
@@ -12,15 +11,19 @@ interface IPost {
 
 const defaultPosts: IPost[] = [];
 
-const App: React.FunctionComponent = () => {
+const App: React.SFC = () => {
   const [posts, setPosts]: [IPost[], (posts: IPost[]) => void] = React.useState(
     defaultPosts
   );
 
-  const [loading, setLoading]: [boolean, (loading: boolean) => void] = React.useState<boolean>(true);
-  
-  const [error, setError]: [string, (error: string) => void] = React.useState("");
-  
+  const [loading, setLoading]: [
+    boolean,
+    (loading: boolean) => void
+  ] = React.useState<boolean>(true);
+
+  const [error, setError]: [string, (error: string) => void] = React.useState(
+    ''
+  );
   const cancelToken = axios.CancelToken;
   const [cancelTokenSource, setCancelTokenSource]: [
     CancelTokenSource,
@@ -59,7 +62,21 @@ const App: React.FunctionComponent = () => {
       });
       cancelTokenSource.cancel("User cancelled operation");
   }, []);
-}
+  return (
+    <div className="App">
+      {loading && <button onClick={handleCancelClick}>Cancel</button>}
+      <ul className="posts">
+        {posts.map((post) => (
+          <li key={post.id}>
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+          </li>
+        ))}
+      </ul>
+      {error && <p className="error">{error}</p>}
+    </div>
+  );
+};
 
 // function App() {
 //   return (
