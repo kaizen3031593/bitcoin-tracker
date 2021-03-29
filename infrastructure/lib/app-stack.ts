@@ -21,7 +21,11 @@ export class AppStack extends cdk.Stack {
       
         // defines an API Gateway REST API resource backed by our "hello" function.
         new apigw.LambdaRestApi(this, 'Endpoint', {
-            handler: helloWithCounter.handler
+            handler: helloWithCounter.handler,
+            defaultCorsPreflightOptions: {
+                allowOrigins: apigw.Cors.ALL_ORIGINS,
+                allowMethods: apigw.Cors.ALL_METHODS
+            }
         });
 
         // const table = new dynamodb.Table(this, 'Hits', {
