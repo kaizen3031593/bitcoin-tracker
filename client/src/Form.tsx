@@ -3,6 +3,9 @@ import React from 'react';
 interface IFormProps {
     /* The http path that the form will be posted to */
     action: string;
+
+    /* A prop which allows content to be injected */
+    render: () => React.ReactNode;
   }
   
   export interface IValues {
@@ -91,7 +94,7 @@ export class Form extends React.Component<IFormProps, IFormState> {
         return (
             <form onSubmit={this.handleSubmit} noValidate={true}>
                 <div className="container">
-                    {/* TODO -render fields */}
+                    {this.props.render()}
                     <div className="form-group">
                         <button
                             type="submit"
