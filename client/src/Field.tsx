@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IErrors } from "./Form";
+// import { IErrors } from "./Form";
 
 /* The available editors for the field */
 type Editor = "textbox" | "multilinetextbox" | "dropdown";

@@ -49,10 +49,11 @@ export class Form extends React.Component<IFormProps, IFormState> {
     private haveErrors(errors: IErrors) {
         let haveError: boolean = false;
         Object.keys(errors).map((key: string) => {
-        if (errors[key].length > 0) {
-            haveError = true;
-        }
-        });
+            if (errors[key].length > 0) {
+                haveError = true;
+            }
+            return null;
+            });
         return haveError;
     }
 
