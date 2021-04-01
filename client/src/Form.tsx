@@ -150,11 +150,16 @@ export class Form extends React.Component<IFormProps, IFormState> {
 
     /**
      * Executes the validation rules for all the fields on the form and sets the error state
-     * @returns {boolean} - Whether the form is valid or not
+     * @returns {boolean} - Returns true if the form is valid
      */
     private validateForm(): boolean {
-        // TODO - validate form
-        return true;
+        const errors: IErrors = {};
+        // eslint-disable-next-line array-callback-return
+        Object.keys(this.props.fields).map((fieldName: string) => {
+            errors[fieldName] = this.validate(fieldName);
+        });
+        this.setState({ errors });
+        return !this.haveErrors(errors);
     }
 
     /**

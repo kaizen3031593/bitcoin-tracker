@@ -1,27 +1,31 @@
 import * as React from "react";
-import { Form, IFields } from "./Form";
+import { Form, IFields, required, isEmail, maxLength} from "./Form";
 import { Field } from "./Field";
 
 export const ContactUsForm: React.SFC = () => {
     const fields: IFields = {
         name: {
           id: "name",
-          label: "Name"
+          label: "Name",
+          validation: { rule: required }
         },
         email: {
           id: "email",
-          label: "Email"
+          label: "Email",
+          validation: { rule: isEmail }
         },
         reason: {
           id: "reason",
           label: "Reason",
           editor: "dropdown",
-          options: ["", "Marketing", "Support", "Feedback", "Jobs"]
+          options: ["", "Marketing", "Support", "Feedback", "Jobs"],
+          validation: { rule: required }
         },
         notes: {
           id: "notes",
           label: "Notes",
-          editor: "multilinetextbox"
+          editor: "multilinetextbox",
+          validation: { rule: maxLength, args: 1000 }
         }
       };
     return (
