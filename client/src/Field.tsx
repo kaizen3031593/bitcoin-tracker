@@ -2,10 +2,16 @@ import * as React from "react";
 import {
     IFormContext,
     FormContext,
+    IValues,
   } from "./Form";
 
 /* The available editors for the field */
 type Editor = "textbox" | "multilinetextbox" | "dropdown";
+
+export interface IValidation {
+    rule: (values: IValues, fieldName: string, args: any) => string;
+    args?: any;
+}
 
 export interface IFieldProps {
   /* The unique field name */
@@ -22,6 +28,9 @@ export interface IFieldProps {
 
   /* The field value */
   value?: any;
+
+  /* The field validator function and argument */
+  validation?: IValidation;
 }
 
 export const Field: React.FC<IFieldProps> = ({

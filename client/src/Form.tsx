@@ -41,6 +41,9 @@ export interface IFormState {
 export interface IFormContext extends IFormState {
   /* Function that allows values in the values state to be set */
   setValues: (values: IValues) => void;
+
+  /* Function that validates a field */
+  validate: (fieldName: string) => void;
 }
 
 /*
@@ -155,6 +158,32 @@ export class Form extends React.Component<IFormProps, IFormState> {
     }
 
     /**
+     * Executes the validation rule for the field and updates the form errors
+     * @param {string} fieldName - The field to validate
+     * @returns {string} - The error message
+     */
+    private validate = (fieldName: string): string => {
+        let newError: string = "";
+    
+        if (
+            this.props.fields[fieldName] &&
+            this.props.fields[fieldName].validation
+        ) {
+        newError = this.props.fields[fieldName].validation!.rule(
+            this.state.values,
+            fieldName,
+            this.props.fields[fieldName].validation!.args
+        );
+        }
+        // eslint-disable-next-line react/no-direct-mutation-state
+        this.state.errors[fieldName] = newError;
+        this.setState({
+        errors: { ...this.state.errors, [fieldName]: newError }
+        });
+        return newError;
+    };
+
+    /**
      * Submits the form to the http api
      * @returns {boolean} - Whether the form submission was successful or not
      */
@@ -167,7 +196,8 @@ export class Form extends React.Component<IFormProps, IFormState> {
         const {submitSuccess, errors } = this.state;
         const context: IFormContext = {
             ...this.state,
-            setValues: this.setValues
+            setValues: this.setValues,
+            validate: this.validate
         };
         return (
             <FormContext.Provider value={context}>
