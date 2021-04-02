@@ -193,8 +193,19 @@ export class Form extends React.Component<IFormProps, IFormState> {
      * @returns {boolean} - Whether the form submission was successful or not
      */
     private async submitForm(): Promise<boolean> {
-        // TODO - submit the form
-        return true;
+        try {
+            const response = await fetch(this.props.action, {
+            method: "post",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            }),
+            body: JSON.stringify(this.state.values)
+            });
+            return response.ok;
+        } catch (ex) {
+            return false;
+        }
     }
 
     public render() {
