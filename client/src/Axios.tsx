@@ -23,7 +23,14 @@ export const Axios: React.FC = () => {
 
   const callAPIClick = () => {
     setRefresh(false);
-    axios.get(`https://ln7kvmlhug.execute-api.us-east-1.amazonaws.com/prod/${num}`)
+    axios({
+      method: 'get',
+      url: `https://ln7kvmlhug.execute-api.us-east-1.amazonaws.com/prod/${num}`,
+      params: {
+        email: "kaizen@gmail.com",
+        threshold: 40000
+      }
+    })
     .then((response) => {
       console.log(response);
       defaultPosts.push({id: num++, data: response.data});

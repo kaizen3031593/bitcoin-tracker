@@ -1,5 +1,7 @@
 exports.handler = async function(event) {
   console.log("request:", JSON.stringify(event, undefined, 2));
+  email = event.queryStringParameters.email;
+  threshold = event.queryStringParameters.threshold;
   return {
     statusCode: 200,
     headers: { 
@@ -8,6 +10,6 @@ exports.handler = async function(event) {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
     },
-    body: `Hello, CDK! You've hit ${event.path}\n`
+    body: `Success! We will alert ${email} when Bitcoin hits ${threshold}\n`
   };
 };
