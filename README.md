@@ -3,6 +3,7 @@
 A website that displays a graph of bitcoin prices and allows users to set notifications for different thresholds. 
 
 ## 🚧🚧🚧🚧🚧🚧🚧 In Progress! 🚧🚧🚧🚧🚧🚧🚧
+Currently learning **React** with **TypeScript** and **node.js** library **Axios**. 
 
 ### Design
 
