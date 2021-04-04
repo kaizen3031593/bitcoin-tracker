@@ -1,8 +1,8 @@
 exports.handler = async function(event) {
   console.log("request:", JSON.stringify(event, undefined, 2));
-  email = event.queryStringParameters.email;
-  threshold = event.queryStringParameters.threshold;
-  
+  const email = event.queryStringParameters.email;
+  const threshold = event.queryStringParameters.threshold;
+
   return {
     statusCode: 200,
     headers: { 
