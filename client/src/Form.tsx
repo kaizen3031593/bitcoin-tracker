@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { IFieldProps } from "./Field";
 
 
@@ -193,29 +194,23 @@ export class Form extends React.Component<IFormProps, IFormState> {
      * @returns {boolean} - Whether the form submission was successful or not
      */
     private async submitForm(): Promise<boolean> {
+        console.log(JSON.stringify(this.state.values))
         try {
-            const response = await fetch(this.props.action, {
-            method: "post",
-            headers: new Headers({
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            }),
-            body: JSON.stringify(this.state.values)
-            });
-            if (response.status === 400) {
-                /* Map the validation errors to IErrors */
-                let responseBody: any;
-                responseBody = await response.json();
-                const errors: IErrors = {};
-                // eslint-disable-next-line array-callback-return
-                Object.keys(responseBody).map((key: string) => {
-                  // For ASP.NET core, the field names are in title case - so convert to camel case
-                  const fieldName = key.charAt(0).toLowerCase() + key.substring(1);
-                  errors[fieldName] = responseBody[key];
-                });
-                this.setState({ errors });
-            }
-            return response.ok;
+            axios({
+                method: 'get',
+                url: `https://ln7kvmlhug.execute-api.us-east-1.amazonaws.com/prod/`,
+                params: {
+                    email: this.state.values.email,
+                    threshold: this.state.values.threshold
+                }
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            return true;
         } catch (ex) {
             return false;
         }

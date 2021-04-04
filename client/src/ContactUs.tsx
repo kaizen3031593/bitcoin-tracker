@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Form, IFields, required, isEmail, maxLength} from "./Form";
+import { Form, IFields, required, isEmail } from "./Form";
 import { Field } from "./Field";
 
-export const ContactUsForm: React.SFC = () => {
+export const ContactUsForm: React.FC = () => {
     const fields: IFields = {
         name: {
           id: "name",
@@ -14,23 +14,15 @@ export const ContactUsForm: React.SFC = () => {
           label: "Email",
           validation: { rule: isEmail }
         },
-        reason: {
-          id: "reason",
-          label: "Reason",
-          editor: "dropdown",
-          options: ["", "Marketing", "Support", "Feedback", "Jobs"],
+        threshold: {
+          id: "threshold",
+          label: "Threshold",
           validation: { rule: required }
-        },
-        notes: {
-          id: "notes",
-          label: "Notes",
-          editor: "multilinetextbox",
-          validation: { rule: maxLength, args: 1000 }
         }
       };
     return (
         <Form
-        action="http://localhost:4351/api/contactus"
+        action="https://ln7kvmlhug.execute-api.us-east-1.amazonaws.com/prod/"
         fields={fields}
         render={() => (
             <React.Fragment>
@@ -40,8 +32,7 @@ export const ContactUsForm: React.SFC = () => {
             </div>
             <Field {...fields.name} />
             <Field {...fields.email} />
-            <Field {...fields.reason} />
-            <Field {...fields.notes} />
+            <Field {...fields.threshold} />
             </React.Fragment>
         )}
         />
