@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { IFieldProps } from "./Field";
 
-
 export interface IFields {
     [key: string]: IFieldProps;
 }
@@ -28,12 +27,20 @@ export interface IErrors {
     [key: string]: string;
 }
 
+export interface IResponse {
+    /* The data of the response*/
+    [key: string]: string;
+}
+
 export interface IFormState {
     /* The field values */
     values: IValues;
   
     /* The field validation error messages */
     errors: IErrors;
+
+    /* The response from the API call */
+    response: IResponse;
   
     /* Whether the form has been successfully submitted */
     submitSuccess?: boolean;
@@ -102,10 +109,12 @@ export class Form extends React.Component<IFormProps, IFormState> {
 
         const errors: IErrors = {};
         const values: IValues = {};
+        const response: IResponse = {};
 
         this.state = {
             errors,
-            values
+            values,
+            response,
         };
     }  
 
@@ -116,6 +125,11 @@ export class Form extends React.Component<IFormProps, IFormState> {
     private setValues = (values: IValues) => {
         this.setState({ values: { ...this.state.values, ...values } });
     };
+
+    private setResponse = (response: IResponse) => {
+        this.setState({ response: response});
+        console.log(this.state.response);
+    }
 
     /**
      * Returns whether there are any errors in the errors object that is passed in
@@ -206,6 +220,7 @@ export class Form extends React.Component<IFormProps, IFormState> {
             })
             .then((response) => {
                 console.log(response);
+                this.setResponse({"data": response.data});
             })
             .catch((error) => {
                 console.log(error);
@@ -217,7 +232,9 @@ export class Form extends React.Component<IFormProps, IFormState> {
     }
 
     public render() {
-        const {submitSuccess, errors } = this.state;
+        const {submitSuccess, errors, response } = this.state;
+        console.log("HERE")
+        console.log(response);
         const context: IFormContext = {
             ...this.state,
             setValues: this.setValues,
@@ -238,9 +255,10 @@ export class Form extends React.Component<IFormProps, IFormState> {
                             </button>
                         </div>
                         {submitSuccess && (
-                            <div className="alert alert-info" role="alert">
+                            <> <div className="alert alert-info" role="alert">
                                 The form was successfully submitted!
                             </div>
+                            <p>{response!.data}</p> </>
                         )}
                         {submitSuccess === false && !this.haveErrors(errors) && (
                             <div className="alert alert-danger" role="alert">
