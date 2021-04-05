@@ -5,6 +5,11 @@ A website that displays a graph of bitcoin prices and allows users to set notifi
 ## 🚧🚧🚧🚧🚧🚧🚧 In Progress! 🚧🚧🚧🚧🚧🚧🚧
 Currently learning **React** with **TypeScript** and **node.js** library **Axios**. 
 
+### Progress
+  - [ ] Monday, April 5: User can enter a form backed by AWS Lambda and display response.
+  - [ ] Next: Store response in DynamoDB Table. 
+  - [ ] Next: Send confirmation email to user via AWS SNS.
+
 ### Design
 
 The frontend of the website should show a live graph of the bitcoin price along with additional statistics. It would be a **huge** plus to get this graph interactive. To achieve this, I will call on the free API from [coinbase](https://developers.coinbase.com/) or something like [polygon](https://polygon.io). The website would have to continuously make these API calls to get up-to-date data. This data could then be stored in **redis/memcached**. For an interactive thing, perhaps embedding a gadget like Tableau would be the way to go, but that is a nice-to-have far down the road.
