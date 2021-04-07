@@ -1,7 +1,8 @@
 import * as cdk from '@aws-cdk/core';
 import * as lambda from '@aws-cdk/aws-lambda';
 import * as apigw from '@aws-cdk/aws-apigateway';
-import { HitCounter } from './hitcounter';
+import * as dynamodb from '@aws-cdk/aws-dynamodb';
+import { Subscriber } from './subscriber';
 
 
 export class AppStack extends cdk.Stack {
@@ -15,13 +16,13 @@ export class AppStack extends cdk.Stack {
             handler: 'hello.handler'                // file is "hello", function is "handler"
         });
 
-        const helloWithCounter = new HitCounter(this, 'HelloHitCounter', {
+        const helloWithSubscriber = new Subscriber(this, 'HelloSubscriber', {
             downstream: hello
         });
       
         // defines an API Gateway REST API resource backed by our "hello" function.
         new apigw.LambdaRestApi(this, 'Endpoint', {
-            handler: helloWithCounter.handler,
+            handler: helloWithSubscriber.handler,
             defaultCorsPreflightOptions: {
                 allowOrigins: apigw.Cors.ALL_ORIGINS,
                 allowMethods: apigw.Cors.ALL_METHODS
