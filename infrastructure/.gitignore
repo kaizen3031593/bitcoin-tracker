@@ -3,6 +3,10 @@
 *.d.ts
 node_modules
 
+# Lambda functions
+!hello.js
+!subscriber.js
+
 # CDK asset staging directory
 .cdk.staging
 cdk.out
