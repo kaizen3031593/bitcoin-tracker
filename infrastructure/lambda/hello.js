@@ -1,5 +1,7 @@
 exports.handler = async function(event) {
   console.log("request:", JSON.stringify(event, undefined, 2));
+
+  // Pull out parameters
   const email = event.queryStringParameters.email;
   const threshold = event.queryStringParameters.threshold;
 

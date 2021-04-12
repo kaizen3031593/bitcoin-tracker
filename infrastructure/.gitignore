@@ -4,8 +4,8 @@
 node_modules
 
 # Lambda functions
-!hello.js
-!subscriber.js
+!lambda/hello.js
+!lambda/subscriber.js
 
 # CDK asset staging directory
 .cdk.staging
