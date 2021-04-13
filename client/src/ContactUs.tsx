@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Form, IFields, required, isEmail } from "./Form";
+import { Form, IFields, required, isEmail, isNumber } from "./Form";
 import { Field } from "./Field";
 
 export const ContactUsForm: React.FC = () => {
@@ -17,7 +17,7 @@ export const ContactUsForm: React.FC = () => {
         threshold: {
           id: "threshold",
           label: "Threshold",
-          validation: { rule: required }
+          validation: { rule: isNumber }
         }
       };
     return (

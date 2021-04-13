@@ -88,6 +88,18 @@ export const isEmail = (values: IValues, fieldName: string): string =>
         : "";
 
 /**
+* Validates whether a field is a valid number
+* @param {IValues} values - All the field values in the form
+* @param {string} fieldName - The field to validate
+* @returns {string} - The error message
+*/
+export const isNumber = (values: IValues, fieldName: string): string =>
+    values[fieldName] && 
+    isNaN(values[fieldName])
+        ? "This must be a number"
+        : "";    
+
+/**
 * Validates whether a field is within a certain amount of characters
 * @param {IValues} values - All the field values in the form
 * @param {string} fieldName - The field to validate
