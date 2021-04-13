@@ -233,8 +233,6 @@ export class Form extends React.Component<IFormProps, IFormState> {
 
     public render() {
         const {submitSuccess, errors, response } = this.state;
-        console.log("HERE")
-        console.log(response);
         const context: IFormContext = {
             ...this.state,
             setValues: this.setValues,
