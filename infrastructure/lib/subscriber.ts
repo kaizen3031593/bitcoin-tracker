@@ -16,7 +16,7 @@ export class Subscriber extends cdk.Construct {
     super(scope, id);
 
     const table = new dynamodb.Table(this, 'Subscribers', {
-        partitionKey: { name: 'email', type: dynamodb.AttributeType.STRING }
+        partitionKey: { name: 'id', type: dynamodb.AttributeType.STRING }
     });
 
     this.handler = new lambda.Function(this, 'SubscriberHandler', {
