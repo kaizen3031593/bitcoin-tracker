@@ -85,7 +85,7 @@ export const isEmail = (values: IValues, fieldName: string): string =>
         /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     )
         ? "This must be in a valid email format"
-        : "";
+        : "";    
 
 /**
 * Validates whether a field is a valid number
@@ -201,12 +201,24 @@ export class Form extends React.Component<IFormProps, IFormState> {
             this.props.fields[fieldName] &&
             this.props.fields[fieldName].validation
         ) {
-        newError = this.props.fields[fieldName].validation!.rule(
-            this.state.values,
-            fieldName,
-            this.props.fields[fieldName].validation!.args
-        );
+            var errors: string[] = [];
+            this.props.fields[fieldName].validation!.rules.forEach(
+                (rule) => {
+                    const error = rule(
+                        this.state.values,
+                        fieldName,
+                        this.props.fields[fieldName].validation!.args
+                    );
+                    if (error !== ""){
+                        errors.push(error);
+                    }
+                }
+            );
+            if (errors.length > 0){
+                newError = errors[0];
+            }
         }
+        console.log(newError);
         // eslint-disable-next-line react/no-direct-mutation-state
         this.state.errors[fieldName] = newError;
         this.setState({

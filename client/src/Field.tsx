@@ -10,7 +10,7 @@ import {
 type Editor = "textbox" | "multilinetextbox" | "dropdown";
 
 export interface IValidation {
-    rule: (values: IValues, fieldName: string, args: any) => string;
+    rules: Array<(values: IValues, fieldName: string, args: any) => string>;
     args?: any;
 }
 

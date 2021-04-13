@@ -7,17 +7,17 @@ export const ContactUsForm: React.FC = () => {
         name: {
           id: "name",
           label: "Name",
-          validation: { rule: required }
+          validation: { rules: [required] }
         },
         email: {
           id: "email",
           label: "Email",
-          validation: { rule: isEmail }
+          validation: { rules: [isEmail, required] }
         },
         threshold: {
           id: "threshold",
           label: "Threshold",
-          validation: { rule: isNumber }
+          validation: { rules: [isNumber, required] }
         }
       };
     return (
