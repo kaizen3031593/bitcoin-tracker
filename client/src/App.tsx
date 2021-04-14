@@ -1,13 +1,14 @@
 import React from 'react';
 import { Axios } from "./Axios";
 import { ContactUsForm } from "./ContactUs";
+import { BitcoinNavbar } from "./Navbar";
 import './App.css';
 
 class App extends React.Component {
   public render() {
     return (
       <div className="mt-3">
-        {/* TODO - reference "contact us" form*/}
+        <BitcoinNavbar/>
         <Axios/>
         <ContactUsForm/> 
       </div>
