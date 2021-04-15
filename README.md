@@ -5,11 +5,15 @@ A website that displays a graph of bitcoin prices and allows users to set notifi
 ## 🚧🚧🚧🚧🚧🚧🚧 In Progress! 🚧🚧🚧🚧🚧🚧🚧
 Currently learning **React** with **TypeScript**.
 
-### Progress
+### Backend Progress
   - [x] Monday, April 5: User can enter a form backed by AWS Lambda and display response.
   - [x] Tuesday, April 13: Store response in DynamoDB Table. 
   - [ ] Next: Send confirmation email to user via AWS SNS.
   - [ ] Next: Allow for unsubscribing, which updates the DynamoDB Table.
+  - [ ] Next: Allow for text option, with unsubscribe.
+
+### Frontend Progress
+  - [x] Thursday, April 15: Integrate fontawesome api into core
   - [ ] Next: Follow tutorial to display bitcoin price ticker leveraging Coinbase API.
   - [ ] Next: Figure out how to create an accompanying graph to the ticker.
 
