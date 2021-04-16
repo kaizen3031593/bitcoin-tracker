@@ -17,6 +17,9 @@ Currently learning **React** with **TypeScript**.
   - [ ] Next: Follow tutorial to display bitcoin price ticker leveraging Coinbase API.
   - [ ] Next: Figure out how to create an accompanying graph to the ticker.
 
+### Miscleaneous Progress
+  - [ ] Friday, April 16: Build out testing process with jest.
+
 ### Design
 
 The frontend of the website should show a live graph of the bitcoin price along with additional statistics. It would be a **huge** plus to get this graph interactive. To achieve this, I will call on the free API from [coinbase](https://developers.coinbase.com/) or something like [polygon](https://polygon.io). The website would have to continuously make these API calls to get up-to-date data. This data could then be stored in **redis/memcached**. For an interactive thing, perhaps embedding a gadget like Tableau would be the way to go, but that is a nice-to-have far down the road.
