@@ -19,6 +19,8 @@ Currently learning **React** with **TypeScript**.
 
 ### Miscleaneous Progress
   - [ ] Friday, April 16: Build out testing process with jest.
+  - [ ] Refactor `LoginForm.tsx` to follow `Form.tsx` syntax.
+  - [ ] Fix bug with fontawesome api.
 
 ### Design
 
