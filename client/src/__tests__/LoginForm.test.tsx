@@ -54,4 +54,21 @@ describe("<LoginForm />", () => {
       
         expect(onPasswordChange).toHaveBeenCalledWith("password");
     });
+
+    test("should allow toggling remember me", async () => {
+        const onRememberChange = jest.fn();
+        const { findByTestId } = renderLoginForm({
+          onRememberChange,
+          shouldRemember: false
+        });
+        const remember = await findByTestId("remember");
+      
+        fireEvent.click(remember);
+      
+        expect(onRememberChange).toHaveBeenCalledWith(true);
+      
+        fireEvent.click(remember);
+      
+        expect(onRememberChange).toHaveBeenCalledWith(false);
+      });
 });
