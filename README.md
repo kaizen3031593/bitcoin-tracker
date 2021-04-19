@@ -11,6 +11,7 @@ Currently learning **React** with **TypeScript**.
   - [ ] Next: Send confirmation email to user via AWS SNS.
   - [ ] Next: Allow for unsubscribing, which updates the DynamoDB Table.
   - [ ] Next: Allow for text option, with unsubscribe.
+  - [ ] Next: Allow for signup/login, to see the subscriptions associated with the account.
 
 ### Frontend Progress
   - [x] Thursday, April 15: Integrate fontawesome api into core
