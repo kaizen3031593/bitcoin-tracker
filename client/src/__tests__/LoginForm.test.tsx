@@ -33,5 +33,25 @@ describe("<LoginForm />", () => {
           password: "",
           remember: true
         });
-      });
+    });
+
+    test("should allow entering a username", async () => {
+        const onUsernameChange = jest.fn();
+        const { findByTestId } = renderLoginForm({ onUsernameChange });
+        const username = await findByTestId("username");
+      
+        fireEvent.change(username, { target: { value: "test" } });
+      
+        expect(onUsernameChange).toHaveBeenCalledWith("test");
+    });
+
+    test("should allow entering a password", async () => {
+        const onPasswordChange = jest.fn();
+        const { findByTestId } = renderLoginForm({ onPasswordChange });
+        const username = await findByTestId("password");
+      
+        fireEvent.change(username, { target: { value: "password" } });
+      
+        expect(onPasswordChange).toHaveBeenCalledWith("password");
+    });
 });
