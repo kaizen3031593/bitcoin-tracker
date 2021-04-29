@@ -15,6 +15,9 @@ interface IFormProps {
 
     /* A prop which allows content to be injected */
     render: () => React.ReactNode;
+
+    /* The function called when submitting the form */
+    // onSubmit: (fields: IFields) => void;
 }
   
 export interface IValues {

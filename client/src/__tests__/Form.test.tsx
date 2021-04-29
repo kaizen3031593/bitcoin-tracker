@@ -45,7 +45,7 @@ function renderForm() {
 describe("<Form />", () => {
     test("display form works", async () => {
         const { findByTestId } = renderForm();
-      
+        
         const name = await findByTestId("name");
         const email = await findByTestId("email");
         const threshold = await findByTestId("threshold");
@@ -54,4 +54,13 @@ describe("<Form />", () => {
         expect(email).toHaveValue("");
         expect(threshold).toHaveValue("");
     });
+
+    // test("name is required", async () => {
+    //     const { findByTestId } = renderForm();
+        
+    //     const name = await findByTestId("name");
+    //     const submit = await findByTestId("submit");
+        
+    //     expect(name).toHaveValue("");
+    // });
 });
