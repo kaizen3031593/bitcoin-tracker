@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, waitForElement } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 
 import LoginForm, { Props } from "../LoginForm";
 
@@ -20,7 +20,7 @@ function renderLoginForm(props: Partial<Props> = {}) {
       shouldRemember: true
     };
     return render(<LoginForm {...defaultProps} {...props} />);
-  }
+}
 
 describe("<LoginForm />", () => {
     test("should display a blank login form, with remember me checked by default", async () => {
@@ -88,7 +88,7 @@ describe("<LoginForm />", () => {
         fireEvent.change(password, { target: { value: "password" } });
         fireEvent.click(remember);
         fireEvent.click(submit);
-        
+
         expect(onSubmit).toHaveBeenCalledWith("test", "password", true);
     });
 });
