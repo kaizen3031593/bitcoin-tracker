@@ -65,6 +65,7 @@ export const Field: React.FC<IFieldProps> = ({
                 {editor!.toLowerCase() === "textbox" && (
                     <input
                     id={id}
+                    data-testid={id}
                     type="text"
                     value={value}
                     onChange={
@@ -80,6 +81,7 @@ export const Field: React.FC<IFieldProps> = ({
                 {editor!.toLowerCase() === "multilinetextbox" && (
                     <textarea
                     id={id}
+                    data-testid={id}
                     value={value}
                     onChange={
                         (e: React.FormEvent<HTMLTextAreaElement>) =>
@@ -94,6 +96,7 @@ export const Field: React.FC<IFieldProps> = ({
                 {editor!.toLowerCase() === "dropdown" && (
                     <select
                     id={id}
+                    data-testid={id}
                     name={id}
                     value={value}
                     onChange={
