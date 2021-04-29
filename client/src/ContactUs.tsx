@@ -5,26 +5,26 @@ import { Field } from "./Field";
 export const ContactUsForm: React.FC = () => {
     const fields: IFields = {
         name: {
-          id: "name",
-          label: "Name",
-          validation: { rules: [required] }
+            id: "name",
+            label: "Name",
+            validation: { rules: [required] }
         },
         email: {
-          id: "email",
-          label: "Email",
-          validation: { rules: [isEmail, required] }
+            id: "email",
+            label: "Email",
+            validation: { rules: [isEmail, required] }
         },
         threshold: {
-          id: "threshold",
-          label: "Threshold",
-          validation: { rules: [isNumber, required] }
+            id: "threshold",
+            label: "Threshold",
+            validation: { rules: [isNumber, required] }
         }
-      };
+    };
     return (
         <Form
-        action="https://ln7kvmlhug.execute-api.us-east-1.amazonaws.com/prod/"
-        fields={fields}
-        render={() => (
+            action="https://ln7kvmlhug.execute-api.us-east-1.amazonaws.com/prod/"
+            fields={fields}
+            render={() => (
             <React.Fragment>
             <div className="alert alert-info" role="alert">
                 Enter the information below and we'll get back to you as soon as we
@@ -34,7 +34,7 @@ export const ContactUsForm: React.FC = () => {
             <Field {...fields.email} />
             <Field {...fields.threshold} />
             </React.Fragment>
-        )}
+            )}
         />
     );
 };
