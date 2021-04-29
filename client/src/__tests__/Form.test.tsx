@@ -13,12 +13,12 @@ const fields: IFields = {
     email: {
         id: "email",
         label: "Email",
-        validation: { rules: [isEmail, required] }
+        validation: { rules: [isEmail] }
     },
     threshold: {
         id: "threshold",
         label: "Threshold",
-        validation: { rules: [isNumber, required] }
+        validation: { rules: [isNumber] }
     }
 };
 
@@ -42,3 +42,16 @@ function renderForm() {
     );
 }
 
+describe("<Form />", () => {
+    test("display form works", async () => {
+        const { findByTestId } = renderForm();
+      
+        const name = await findByTestId("name");
+        const email = await findByTestId("email");
+        const threshold = await findByTestId("threshold");
+
+        expect(name).toHaveValue("");
+        expect(email).toHaveValue("");
+        expect(threshold).toHaveValue("");
+    });
+});
