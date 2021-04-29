@@ -19,7 +19,7 @@ Currently learning **React** with **TypeScript**.
   - [ ] Next: Figure out how to create an accompanying graph to the ticker.
 
 ### Miscleaneous Progress
-  - [ ] Friday, April 16: Build out testing process with jest.
+  - [x] Thursday, April 29: Build out testing process with jest.
   - [ ] Refactor `LoginForm.tsx` to follow `Form.tsx` syntax.
   - [ ] Fix bug with fontawesome api.
 
@@ -32,6 +32,10 @@ The website should start with basic functionality to enter an email address and 
 ### CI/CD
 
 A major goal of mine during this project is to use strong programming principles. To that end, I spent a ton of time setting up CI/CD pipelines using [Buddy](https://app.buddy.works/). One pipeline governs the AWS architecture cdk app while the other pipeline is for the react app.
+
+### Testing
+
+Strong programming principles includes rigorous testing. I am trying to provide exhaustive tests for every React component I write. I use **jest** and am looking into additional tools like **Enzyme** to help out here. 
 
 **React Pipeline**
 
