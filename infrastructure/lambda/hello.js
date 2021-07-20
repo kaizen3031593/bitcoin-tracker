@@ -13,6 +13,6 @@ exports.handler = async function(event) {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
     },
-    body: `Success! We will alert ${email} when Bitcoin hits ${threshold}\n`
+    body: `Success! You should get a confirmation email. We will alert ${email} when Bitcoin hits ${threshold}\n`
   };
 };
